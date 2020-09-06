@@ -1,18 +1,21 @@
+import 'package:direct_select/direct_select.dart';
+import 'package:dropdown_formfield/dropdown_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mktransfert/core/presentation/res/assets.dart';
 
-import 'navigation.dart';
 
+class LoginPage extends StatefulWidget {
+  LoginPage({Key key, this.title}) : super(key: key);
 
-class AuthThreePage extends StatefulWidget {
-  static final String path = "lib/src/pages/login/auth3.dart";
+  final String title;
 
   @override
-  _AuthThreePageState createState() => _AuthThreePageState();
+  _LoginPageState createState() => _LoginPageState();
+
 }
 
-class _AuthThreePageState extends State<AuthThreePage> {
+class _LoginPageState extends State<LoginPage> {
   final String backImg = accueil;
   bool formVisible;
   int _formsIndex;
@@ -44,8 +47,9 @@ class _AuthThreePageState extends State<AuthThreePage> {
                     Expanded(
                       child: Column(
                         children: <Widget>[
+                          Image.network('https://firebasestorage.googleapis.com/v0/b/mktransfert-d6990.appspot.com/o/LogoMKWhite_Plan%20de%20travail%201%20copie%204.png?alt=media&token=15bd19f2-0ca8-4058-81cb-bcbdf09201f6'),
                           Text(
-                            "Welcome",
+                            "Bienvenu",
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w500,
@@ -54,7 +58,7 @@ class _AuthThreePageState extends State<AuthThreePage> {
                           ),
                           const SizedBox(height: 10.0),
                           Text(
-                            "Welcome to this awesome login app. \n You are awesome",
+                            "Envoyez de l'argent partout en Guinee\n avec des taux défiants toutes concurrences.",
                             style: TextStyle(
                               color: Colors.white70,
                               fontSize: 18.0,
@@ -70,13 +74,13 @@ class _AuthThreePageState extends State<AuthThreePage> {
                         const SizedBox(width: 10.0),
                         Expanded(
                           child: RaisedButton(
-                            color: Colors.red,
+                            color: Colors.blueAccent,
                             textColor: Colors.white,
                             elevation: 0,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0),
                             ),
-                            child: Text("Login"),
+                            child: Text("Connexion"),
                             onPressed: () {
                               setState(() {
                                 formVisible = true;
@@ -94,7 +98,7 @@ class _AuthThreePageState extends State<AuthThreePage> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0),
                             ),
-                            child: Text("Signup"),
+                            child: Text("S'enregistrer"),
                             onPressed: () {
                               setState(() {
                                 formVisible = true;
@@ -108,14 +112,14 @@ class _AuthThreePageState extends State<AuthThreePage> {
                     ),
                     const SizedBox(height: 40.0),
                     OutlineButton.icon(
-                      borderSide: BorderSide(color: Colors.red),
-                      color: Colors.red,
+                      borderSide: BorderSide(color: Colors.blueAccent),
+                      color: Colors.blueAccent,
                       textColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       icon: Icon(FontAwesomeIcons.google),
-                      label: Text("Continue with Google"),
+                      label: Text("Continuer avec google"),
                       onPressed: () {},
                     ),
                     const SizedBox(height: 20.0),
@@ -140,15 +144,14 @@ class _AuthThreePageState extends State<AuthThreePage> {
                                 ? Colors.white
                                 : Colors.black,
                             color:
-                            _formsIndex == 1 ? Colors.red : Colors.white,
-                            child: Text("Login"),
+                            _formsIndex == 1 ? Colors.blueAccent : Colors.white,
+                            child: Text("Connexion"),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.0)),
                             onPressed: () {
                               setState(() {
                                 _formsIndex = 1;
                               });
-
                             },
                           ),
                           const SizedBox(width: 10.0),
@@ -157,8 +160,8 @@ class _AuthThreePageState extends State<AuthThreePage> {
                                 ? Colors.white
                                 : Colors.black,
                             color:
-                            _formsIndex == 2 ? Colors.red : Colors.white,
-                            child: Text("Signup"),
+                            _formsIndex == 2 ? Colors.blueAccent : Colors.white,
+                            child: Text("S'enregistrer"),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.0)),
                             onPressed: () {
@@ -183,7 +186,7 @@ class _AuthThreePageState extends State<AuthThreePage> {
                         child: AnimatedSwitcher(
                           duration: Duration(milliseconds: 300),
                           child:
-                          _formsIndex == 1 ? LoginForm() : SignupForm(),
+                          _formsIndex == 1 ? LoginForm() : SignupPage(),
                         ),
                       )
                     ],
@@ -229,32 +232,66 @@ class LoginForm extends StatelessWidget {
           ),
           const SizedBox(height: 10.0),
           RaisedButton(
-            color: Colors.red,
+            color: Colors.blueAccent,
             textColor: Colors.white,
             elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20.0),
             ),
-            child: Text("Login"),
-            onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => NavigationPage()),);},
+            child: Text("Connex"),
+            onPressed: () {},
           ),
         ],
       ),
     );
   }
 }
+class SignupPage extends StatefulWidget {
+  SignupPage({Key key, this.title}) : super(key: key);
 
-class SignupForm extends StatelessWidget {
-  const SignupForm({
-    Key key,
-  }) : super(key: key);
+  final String title;
+
+  @override
+  _SignupFormState createState() => _SignupFormState();
+
+}
+class _SignupFormState extends State<SignupPage>  {
+  String _myActivity;
+  String _myActivityResult;
+  final formKey = new GlobalKey<FormState>();
+  final elements1 = [
+    "Guinée",
+    "Sénégal",
+    "Cote d'Ivoire",
+  ];
+  int selectedIndex1 = 0,
+      selectedIndex2 = 0,
+      selectedIndex3 = 0,
+      selectedIndex4 = 0;
+  List<Widget> _buildItems1() {
+    return elements1
+        .map((val) => MySelectionItem(
+      title: val,
+    ))
+        .toList();
+  }
+  @override
+  void initState() {
+    super.initState();
+    _myActivity = '';
+    _myActivityResult = '';
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(16.0),
+      width: MediaQuery
+          .of(context)
+          .size
+          .width,
+      margin: const EdgeInsets.all(20.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.red,
         borderRadius: BorderRadius.circular(16.0),
       ),
       child: ListView(
@@ -267,7 +304,7 @@ class SignupForm extends StatelessWidget {
               border: OutlineInputBorder(),
             ),
           ),
-          const SizedBox(height: 10.0),
+          const SizedBox(height: 5.0),
           TextField(
             obscureText: true,
             decoration: InputDecoration(
@@ -275,7 +312,7 @@ class SignupForm extends StatelessWidget {
               border: OutlineInputBorder(),
             ),
           ),
-          const SizedBox(height: 10.0),
+          const SizedBox(height: 5.0),
           TextField(
             obscureText: true,
             decoration: InputDecoration(
@@ -283,19 +320,128 @@ class SignupForm extends StatelessWidget {
               border: OutlineInputBorder(),
             ),
           ),
-          const SizedBox(height: 10.0),
+          const SizedBox(height: 5.0),
+
+
+/*
+        Column(
+         children: <Widget>[
+
+         ],
+          */
+/*  child:DropdownButton(
+                value: _value,
+                items: [
+                  DropdownMenuItem(
+                    child: Text("Guinée"),
+                    value: 1,
+                  ),
+                  DropdownMenuItem(
+                    child: Text("Sénégal"),
+                    value: 2,
+                  ),
+                  DropdownMenuItem(
+                      child: Text("Côte d'Ivoire"),
+                      value: 3
+                  ),
+                ],
+                onChanged: (value) {
+                  setState(() {
+                    _value = value;
+                  });
+                }
+            )//
+
+
+
+    ),
+    */
+
+/*          Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(left: 5.0),
+                  child: Text(
+                    "Pays",
+                    style: TextStyle(
+                        color: Colors.grey, fontWeight: FontWeight.w500),
+                  ),
+                ),
+                DirectSelect(
+                    itemExtent: 35.0,
+                    selectedIndex: selectedIndex1,
+                    child: MySelectionItem(
+                      isForList: false,
+                      title: elements1[selectedIndex1],
+                    ),
+                    onSelectedItemChanged: (index) {
+                      setState(() {
+                        selectedIndex1 = index;
+                      });
+                    },
+                    items: _buildItems1()),
+              ]
+          ),*/
           RaisedButton(
-            color: Colors.red,
+            color: Colors.blueAccent,
             textColor: Colors.white,
             elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20.0),
             ),
-            child: Text("Signup"),
+            child: Text("S'enregistrer"),
             onPressed: () {},
           ),
         ],
       ),
     );
   }
+}
+class MySelectionItem extends StatelessWidget {
+  final String title;
+  final bool isForList;
+
+  const MySelectionItem({Key key, this.title, this.isForList = true})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 60.0,
+      child: isForList
+          ? Padding(
+        child: _buildItem(context),
+        padding: EdgeInsets.all(10.0),
+      )
+          : Card(
+        margin: EdgeInsets.symmetric(horizontal: 10.0),
+        child: Stack(
+          children: <Widget>[
+            _buildItem(context),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Icon(Icons.arrow_drop_down),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildItem(BuildContext context) {
+    return Container(
+      width: MediaQuery
+          .of(context)
+          .size
+          .width,
+      alignment: Alignment.center,
+      child: FittedBox(
+          child: Text(
+            title,
+          )),
+    );
+  }
+
 }

@@ -1,8 +1,3 @@
-/**
- * Author: Damodar Lohani
- * profile: https://github.com/lohanidamodar
- */
-
 import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -10,7 +5,7 @@ import 'package:mktransfert/core/presentation/widget/rounded_bordered_container.
 import 'package:mktransfert/src/page/registerBeneficiaire.dart';
 import 'package:mktransfert/src/page/registerBeneficiaireEntreprise.dart';
 
-class chooseBeneficiairePage extends StatelessWidget {
+class ChooseBeneficiairePage extends StatelessWidget {
   static final String path = "lib/src/pages/ecommerce/cart1.dart";
   @override
   Widget build(BuildContext context) {

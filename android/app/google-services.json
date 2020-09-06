@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1060355798651",
+    "firebase_url": "https://mktransfert-d6990.firebaseio.com",
+    "project_id": "mktransfert-d6990",
+    "storage_bucket": "mktransfert-d6990.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1060355798651:android:c473efb3145466ada914de",
+        "android_client_info": {
+          "package_name": "com.example.mktransfert"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1060355798651-k7dh208t83glhm08ua4lhf0bqbhskmrs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOnLBCJbHDag8CDRkFyLGsf07mmqTmSV4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1060355798651-k7dh208t83glhm08ua4lhf0bqbhskmrs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

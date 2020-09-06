@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:mktransfert/src/page/payment.dart';
 import 'navigation.dart';
 
 const request = "https://api.hgbrasil.com/finance?format=json&key=80f27c39";
@@ -19,8 +20,8 @@ Future<Map> getData() async {
 }
 
 class _TransactionState extends State<TransactionPage> {
-  final realController = TextEditingController();
   final dolarController = TextEditingController();
+  final realController = TextEditingController();
   final euroController = TextEditingController();
 
 
@@ -137,7 +138,7 @@ class _TransactionState extends State<TransactionPage> {
                                 child: Text("Continue"),
                                 color: Colors.indigo,
                                 textColor: Colors.white,
-                                onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => NavigationPage()),);},
+                                onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentPage()),);},
                               ),
                             ],
                           )

@@ -1,14 +1,9 @@
-/**
- * Author: Damodar Lohani
- * profile: https://github.com/lohanidamodar
- */
-
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:mktransfert/core/presentation/res/assets.dart';
 import 'package:mktransfert/network_image.dart';
+import 'package:mktransfert/src/page/loginPage.dart';
 
-import 'login.dart';
 
 class AccueilPage extends StatefulWidget {
   static final String path = "lib/src/pages/onboarding/intro6.dart";
@@ -70,7 +65,7 @@ class _AccueilPageState extends State<AccueilPage> {
               child: Text("Skip"),
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => AuthThreePage())
+                    builder: (context) => LoginPage())
                 );
               },
             ),
@@ -82,7 +77,7 @@ class _AccueilPageState extends State<AccueilPage> {
               Icon(_currentIndex == 2 ? Icons.check : Icons.arrow_forward),
               onPressed: () {
                 if (_currentIndex != 2) _controller.next();
-                else    Navigator.push(context, MaterialPageRoute(builder: (context) => AuthThreePage()),);
+                else    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()),);
               },
             ),
           )

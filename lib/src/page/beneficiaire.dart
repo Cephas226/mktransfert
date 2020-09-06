@@ -1,10 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
-
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mktransfert/core/presentation/res/assets.dart';
 import 'package:mktransfert/core/presentation/widget/rounded_bordered_container.dart';
 import 'package:mktransfert/src/page/chooseBeneficiaire.dart';
+
+import 'package:mktransfert/src/page/transaction.dart';
 
 class BeneficiairePage extends StatefulWidget {
   static final String path = "lib/src/pages/settings/settings1.dart";
@@ -32,7 +31,7 @@ class _BeneficiairePageState extends State<BeneficiairePage> {
                Container(
                  child:GestureDetector(
                      onTap: () {  Navigator.push(context, MaterialPageRoute(
-                         builder: (context) => chooseBeneficiairePage()));},
+                         builder: (context) => ChooseBeneficiairePage()));},
                      child: Text("Ajouter",style: TextStyle(
                          fontWeight: FontWeight.bold, color: Colors.white))
                  ),
@@ -51,7 +50,7 @@ class _BeneficiairePageState extends State<BeneficiairePage> {
               borderRadius: BorderRadius.all(Radius.circular(30)),
               child: TextField(
                 controller:
-                TextEditingController(text: 'Recherche...'),
+                TextEditingController(text: 'Recherche un bénéficiaire...'),
                 cursorColor: Theme.of(context).primaryColor,
                 style: TextStyle(color: Colors.black, fontSize: 18),
                 decoration: InputDecoration(
@@ -140,12 +139,11 @@ class _BeneficiairePageState extends State<BeneficiairePage> {
                   Row(
                     children: <Widget>[
                       Flexible(
-                        child: Text(
-                          "Nom:Cephas ZOUBGA",
-                          overflow: TextOverflow.fade,
-                          softWrap: true,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600, fontSize: 15),
+                        child:GestureDetector(
+                            onTap: () {  Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => TransactionPage()));},
+                            child: Text( "Nom:Cephas ZOUBGA",  style: TextStyle(
+                                fontWeight: FontWeight.w600, fontSize: 15),)
                         ),
                       ),
                       Container(
@@ -176,7 +174,7 @@ class _BeneficiairePageState extends State<BeneficiairePage> {
                   ),
                   Row(
                     children: <Widget>[
-                      Text("adresse"),
+                      Text("Adresse"),
                       SizedBox(
                         width: 5,
                       ),
@@ -253,16 +251,6 @@ class _BeneficiairePageState extends State<BeneficiairePage> {
           )
         ],
       ),
-    );
-  }
-  Container _buildDivider() {
-    return Container(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 8.0,
-      ),
-      width: double.infinity,
-      height: 1.0,
-      color: Colors.grey.shade400,
     );
   }
 }
