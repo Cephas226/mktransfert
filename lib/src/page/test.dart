@@ -1,445 +1,93 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mktransfert/core/presentation/res/assets.dart';
 
+class EcommerceOnePage extends StatelessWidget {
 
-class LoginPage extends StatefulWidget {
-  LoginPage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _LoginPageState createState() => _LoginPageState();
-
-}
-
-class _LoginPageState extends State<LoginPage> {
-  final String backImg = accueil;
-  bool formVisible;
-  int _formsIndex;
-
-  @override
-  void initState() {
-    super.initState();
-    formVisible = false;
-    _formsIndex = 1;
+  Widget _buildListView(_, index) {
+    if (index == 3) return _buildPopular();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(accueil),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: Stack(
-            children: <Widget>[
-              Container(
-                color: Colors.black54,
-                child: Column(
-                  children: <Widget>[
-                    const SizedBox(height: kToolbarHeight + 40),
-                    Expanded(
-                      child: Column(
-                        children: <Widget>[
-                          Image.network('https://firebasestorage.googleapis.com/v0/b/mktransfert-d6990.appspot.com/o/LogoMKWhite_Plan%20de%20travail%201%20copie%204.png?alt=media&token=15bd19f2-0ca8-4058-81cb-bcbdf09201f6'),
-                          Text(
-                            "Bienvenu",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 30.0,
-                            ),
-                          ),
-                          const SizedBox(height: 10.0),
-                          Text(
-                            "Envoyez de l'argent partout en Guinee\n avec des taux défiants toutes concurrences.",
-                            style: TextStyle(
-                              color: Colors.white70,
-                              fontSize: 18.0,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 10.0),
-                    Row(
-                      children: <Widget>[
-                        const SizedBox(width: 10.0),
-                        Expanded(
-                          child: RaisedButton(
-                            color: Colors.blueAccent,
-                            textColor: Colors.white,
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            child: Text("Connexion"),
-                            onPressed: () {
-                              setState(() {
-                                formVisible = true;
-                                _formsIndex = 1;
-                              });
-                            },
-                          ),
-                        ),
-                        const SizedBox(width: 10.0),
-                        Expanded(
-                          child: RaisedButton(
-                            color: Colors.grey.shade700,
-                            textColor: Colors.white,
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            child: Text("S'enregistrer"),
-                            onPressed: () {
-                              setState(() {
-                                formVisible = true;
-                                _formsIndex = 2;
-                              });
-                            },
-                          ),
-                        ),
-                        const SizedBox(width: 10.0),
-                      ],
-                    ),
-                    const SizedBox(height: 40.0),
-                    OutlineButton.icon(
-                      borderSide: BorderSide(color: Colors.blueAccent),
-                      color: Colors.blueAccent,
-                      textColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      icon: Icon(FontAwesomeIcons.google),
-                      label: Text("Continuer avec google"),
-                      onPressed: () {},
-                    ),
-                    const SizedBox(height: 20.0),
-                  ],
-                ),
-              ),
-              AnimatedSwitcher(
-                duration: Duration(milliseconds: 200),
-                child: (!formVisible)
-                    ? null
-                    : Container(
-                  color: Colors.black54,
-                  alignment: Alignment.center,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          RaisedButton(
-                            textColor: _formsIndex == 1
-                                ? Colors.white
-                                : Colors.black,
-                            color:
-                            _formsIndex == 1 ? Colors.blueAccent : Colors.white,
-                            child: Text("Connexion"),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0)),
-                            onPressed: () {
-                              setState(() {
-                                _formsIndex = 1;
-                              });
-                            },
-                          ),
-                          const SizedBox(width: 10.0),
-                          RaisedButton(
-                            textColor: _formsIndex == 2
-                                ? Colors.white
-                                : Colors.black,
-                            color:
-                            _formsIndex == 2 ? Colors.blueAccent : Colors.white,
-                            child: Text("S'enregistrer"),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0)),
-                            onPressed: () {
-                              setState(() {
-                                _formsIndex = 2;
-                              });
-                            },
-                          ),
-                          const SizedBox(width: 10.0),
-                          IconButton(
-                            color: Colors.white,
-                            icon: Icon(Icons.clear),
-                            onPressed: () {
-                              setState(() {
-                                formVisible = false;
-                              });
-                            },
-                          )
-                        ],
-                      ),
-                      Container(
-                        child: AnimatedSwitcher(
-                          duration: Duration(milliseconds: 300),
-                          child:
-                          _formsIndex == 1 ? LoginForm() : SignupPage(),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
-        ));
-  }
-}
-
-class LoginForm extends StatelessWidget {
-  const LoginForm({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildPopular() {
     return Container(
-      margin: const EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16.0),
-      ),
-      child: ListView(
-        shrinkWrap: true,
-        padding: const EdgeInsets.all(16.0),
+      height: 180,
+      child: Column(
         children: <Widget>[
-          TextField(
-            decoration: InputDecoration(
-              hintText: "Enter email",
-              border: OutlineInputBorder(),
-            ),
-          ),
-          const SizedBox(height: 10.0),
-          TextField(
-            obscureText: true,
-            decoration: InputDecoration(
-              hintText: "Enter password",
-              border: OutlineInputBorder(),
-            ),
-          ),
-          const SizedBox(height: 10.0),
-          RaisedButton(
-            color: Colors.blueAccent,
-            textColor: Colors.white,
-            elevation: 0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            child: Text("Connex"),
-            onPressed: () {},
-          ),
-        ],
-      ),
-    );
-  }
-}
-class SignupPage extends StatefulWidget {
-  SignupPage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _SignupFormState createState() => _SignupFormState();
-
-}
-class _SignupFormState extends State<SignupPage>  {
-  String _myActivity;
-  String _myActivityResult;
-  final formKey = new GlobalKey<FormState>();
-  final elements1 = [
-    "Guinée",
-    "Sénégal",
-    "Cote d'Ivoire",
-  ];
-  int selectedIndex1 = 0,
-      selectedIndex2 = 0,
-      selectedIndex3 = 0,
-      selectedIndex4 = 0;
-  List<Widget> _buildItems1() {
-    return elements1
-        .map((val) => MySelectionItem(
-      title: val,
-    ))
-        .toList();
-  }
-  @override
-  void initState() {
-    super.initState();
-    _myActivity = '';
-    _myActivityResult = '';
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery
-          .of(context)
-          .size
-          .width,
-      margin: const EdgeInsets.all(20.0),
-      decoration: BoxDecoration(
-        color: Colors.red,
-        borderRadius: BorderRadius.circular(16.0),
-      ),
-      child: ListView(
-        shrinkWrap: true,
-        padding: const EdgeInsets.all(16.0),
-        children: <Widget>[
-          TextField(
-            decoration: InputDecoration(
-              hintText: "Enter email",
-              border: OutlineInputBorder(),
-            ),
-          ),
-          const SizedBox(height: 5.0),
-          TextField(
-            obscureText: true,
-            decoration: InputDecoration(
-              hintText: "Enter password",
-              border: OutlineInputBorder(),
-            ),
-          ),
-          const SizedBox(height: 5.0),
-          TextField(
-            obscureText: true,
-            decoration: InputDecoration(
-              hintText: "Confirm password",
-              border: OutlineInputBorder(),
-            ),
-          ),
-          const SizedBox(height: 5.0),
-
-
-/*
-        Column(
-         children: <Widget>[
-
-         ],
-          */
-/*  child:DropdownButton(
-                value: _value,
-                items: [
-                  DropdownMenuItem(
-                    child: Text("Guinée"),
-                    value: 1,
-                  ),
-                  DropdownMenuItem(
-                    child: Text("Sénégal"),
-                    value: 2,
-                  ),
-                  DropdownMenuItem(
-                      child: Text("Côte d'Ivoire"),
-                      value: 3
-                  ),
-                ],
-                onChanged: (value) {
-                  setState(() {
-                    _value = value;
-                  });
-                }
-            )//
-
-
-
-    ),
-    */
-
-/*          Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+          Container(
+            padding: EdgeInsets.all(10.0),
+            child: Row(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(left: 5.0),
-                  child: Text(
-                    "Pays",
-                    style: TextStyle(
-                        color: Colors.grey, fontWeight: FontWeight.w500),
-                  ),
+                _buildPopularItem(),
+                SizedBox(
+                  width: 10.0,
                 ),
-                DirectSelect(
-                    itemExtent: 35.0,
-                    selectedIndex: selectedIndex1,
-                    child: MySelectionItem(
-                      isForList: false,
-                      title: elements1[selectedIndex1],
-                    ),
-                    onSelectedItemChanged: (index) {
-                      setState(() {
-                        selectedIndex1 = index;
-                      });
-                    },
-                    items: _buildItems1()),
-              ]
-          ),*/
-          RaisedButton(
-            color: Colors.blueAccent,
-            textColor: Colors.white,
-            elevation: 0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0),
+                _buildPopularItem(),
+              ],
             ),
-            child: Text("S'enregistrer"),
-            onPressed: () {},
+          ),
+          Container(
+            padding: EdgeInsets.all(10.0),
+            child: Row(
+              children: <Widget>[
+                _buildPopularItem(),
+                SizedBox(
+                  width: 10.0,
+                ),
+                _buildPopularItem(),
+              ],
+            ),
           ),
         ],
       ),
     );
   }
-}
-class MySelectionItem extends StatelessWidget {
-  final String title;
-  final bool isForList;
 
-  const MySelectionItem({Key key, this.title, this.isForList = true})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 60.0,
-      child: isForList
-          ? Padding(
-        child: _buildItem(context),
-        padding: EdgeInsets.all(10.0),
-      )
-          : Card(
-        margin: EdgeInsets.symmetric(horizontal: 10.0),
-        child: Stack(
-          children: <Widget>[
-            _buildItem(context),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Icon(Icons.arrow_drop_down),
-            )
-          ],
+  Expanded _buildPopularItem() {
+    return Expanded(
+      child: Container(
+        decoration: BoxDecoration(
+            color: Colors.grey.shade200,
+            border: Border(
+                left: BorderSide(
+                    color: Colors.red.shade200,
+                    style: BorderStyle.solid,
+                    width: 5))),
+        child: ListTile(
+          onTap: () {},
+          title: Text("Vehicles"),
+          subtitle: Text('120 people want this'),
+          trailing: Container(
+              width: 50,
+             ),
         ),
       ),
     );
   }
-
-  Widget _buildItem(BuildContext context) {
-    return Container(
-      width: MediaQuery
-          .of(context)
-          .size
-          .width,
-      alignment: Alignment.center,
-      child: FittedBox(
-          child: Text(
-            title,
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurple,
+        title: Text('Flutter UIs'),
+        elevation: 0,
+      ),
+      body: SafeArea(
+          child: ListView.builder(
+            itemBuilder: _buildListView,
+            itemCount: 10,
           )),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.message), title: Text('Messages')),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart), title: Text('Cart')),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person), title: Text('Account')),
+        ],
+        currentIndex: 0,
+        type: BottomNavigationBarType.fixed,
+        fixedColor: Colors.red,
+      ),
     );
   }
-
 }

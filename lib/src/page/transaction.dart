@@ -21,9 +21,32 @@ class _TransactionState extends State<TransactionPage> {
   Color color2 = _colorFromHex("#b74093");
   final formKey = new GlobalKey<FormState>();
   final point_retrait = [
-    "Guinée",
-    "Sénégal",
-    "Cote d'Ivoire",
+    "Boffa",
+    "Boke",
+    "Conakry – Kaloum",
+    "Conakry – Madina",
+    "Conakry - Bambeto",
+    "Conakry – Enco",
+    "Conakry - Matoto",
+    "Conakry – Lambanyi",
+    "Cosa - Rond-Point",
+    "Conakry - cimenterie carrefour",
+    "Conakry – Dabompa",
+    "Coyah",
+    "Dubreka Km",
+    "Fria",
+    "Kamsar",
+    "Kankan",
+    "Kindia",
+    "Koundara",
+    "Labe",
+    "Lelouma",
+    "Mamou",
+    "N’Zerekore",
+    "Pita",
+    "Sangaredji",
+   " Timbi Madina",
+    "Touba",
   ];
   int selectedIndex1 = 0;
   List<Widget> _buildItems1() {
@@ -99,7 +122,7 @@ class _TransactionState extends State<TransactionPage> {
                     ListTile(
                       title: TextField(
                         decoration: InputDecoration(
-                          hintText: "Saisir le montant à envoyer ",
+                          hintText: "Saisir le montant à envoyer",
                           border: OutlineInputBorder(),
                         ),
                         controller: fromTextController,
@@ -119,17 +142,10 @@ class _TransactionState extends State<TransactionPage> {
                             Text(
                               result,
                               style: Theme.of(context).textTheme.display1,
-                            ) : Text(""),
+                            ) : Text("Resultat attendu"),
                           ),
                           trailing: _buildDropDownButton(toCurrency),
                         ),
-                   /* ListTile(
-                      title: Text(
-                        result,
-                        style: Theme.of(context).textTheme.display1,
-                      ),
-                      trailing: _buildDropDownButton(toCurrency),
-                    )*/
                     const SizedBox(height: 30.0),
                     Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -160,7 +176,47 @@ class _TransactionState extends State<TransactionPage> {
                           const SizedBox(height: 20.0),
                         ]
                     ),
-
+                   Container(
+                     height: 80,
+                     child: Card(
+                       color: _colorFromHex("#F7FAFF"),
+                       elevation: 3.0,
+                       child: Row(
+                         mainAxisAlignment: MainAxisAlignment.start,
+                         children: <Widget>[
+                           Text("Montant à recevoir:",style: TextStyle (fontWeight:FontWeight.w500)),
+                         ],
+                       ),
+                     ),
+                   ),
+                    const SizedBox(height: 20.0),
+                    Container(
+                      height: 80,
+                      child: Card(
+                        color: _colorFromHex("#F7FAFF"),
+                        elevation: 3.0,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Text("Montant commission:",style: TextStyle (fontWeight:FontWeight.w500)),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20.0),
+                    Container(
+                      height: 80,
+                      child: Card(
+                        color: _colorFromHex("#F7FAFF"),
+                        elevation: 3.0,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Text("Montant total à payer:",style: TextStyle (fontWeight:FontWeight.w500)),
+                          ],
+                        ),
+                      ),
+                    ),
                     SizedBox(
                       width: double.infinity,
                       height: 50.0,
