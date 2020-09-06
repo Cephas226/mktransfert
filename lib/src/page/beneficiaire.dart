@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mktransfert/core/presentation/res/assets.dart';
 import 'package:mktransfert/core/presentation/widget/rounded_bordered_container.dart';
 import 'package:mktransfert/src/page/chooseBeneficiaire.dart';
+import 'package:mktransfert/src/page/payment.dart';
 
 import 'package:mktransfert/src/page/transaction.dart';
 
@@ -12,10 +13,27 @@ class BeneficiairePage extends StatefulWidget {
 }
 
 class _BeneficiairePageState extends State<BeneficiairePage> {
-  @override
-  void initState() {
-    super.initState();
+  TextEditingController searchController = new TextEditingController();
+  String filter;
+
+  @override  initState() {
+    searchController.addListener(() {
+      setState(() {
+        filter = searchController.text;
+      });
+    });
   }
+  List<Contact> contacts = [
+    Contact(fullName: 'Pratap Kumar', email: 'pratap@example.com',adresse:'Casablanca'),
+    Contact(fullName: 'Jagadeesh', email: 'Jagadeesh@example.com',adresse:'Guinée'),
+    Contact(fullName: 'Srinivas', email: 'Srinivas@example.com',adresse:'Casablanca'),
+    Contact(fullName: 'Narendra', email: 'Narendra@example.com',adresse:'Guinée'),
+    Contact(fullName: 'Sravan ', email: 'Sravan@example.com',adresse:'Casablanca'),
+    Contact(fullName: 'Ranganadh', email: 'Ranganadh@example.com',adresse:'Guinée'),
+    Contact(fullName: 'Karthik', email: 'Karthik@example.com',adresse:'Casablanca'),
+    Contact(fullName: 'Saranya', email: 'Saranya@example.com',adresse:'Guinée'),
+    Contact(fullName: 'Mahesh', email: 'Mahesh@example.com',adresse:'Casablanca'),
+  ];
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -66,51 +84,39 @@ class _BeneficiairePageState extends State<BeneficiairePage> {
               ),
             ),
             Flexible(
-              child: ListView.builder(
-                itemCount: 6,
-                itemBuilder: (context, int index) {
-                  return cartItems(index);
+              child:ListView.builder(
+                itemCount: contacts.length,
+                itemBuilder: (context, index) {
+                  return filter == null || filter == ""?
+                  ListTile(
+                    title: Text(
+                      '${contacts[index].fullName}',
+                    ),
+                    subtitle: Text(
+                        '${contacts[index].email}',
+                    ),
+                    leading: new CircleAvatar(
+                        backgroundColor: Colors.blue,
+                        child: Text(
+                            '${contacts[index].fullName.substring(0, 1)}')),
+                    onTap: () => _onTapItem(context, contacts[index]),
+                  ):'${contacts[index].fullName}'.toLowerCase()
+                      .contains(filter.toLowerCase())
+                      ? ListTile(
+                    title: Text(
+                      '${contacts[index].fullName}',
+                    ),
+                    subtitle: Text('${contacts[index].email}'),
+                    leading: new CircleAvatar(
+                        backgroundColor: Colors.blue,
+                        child: Text(
+                            '${contacts[index].fullName.substring(0, 1)}')),
+                    onTap: () =>
+                        _onTapItem(context, contacts[index]),
+                  ): new Container();
                 },
               ),
             ),
-           /* SingleChildScrollView(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    "Bénéficiaires",
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.indigo,
-                    ),
-                  ),
-                  const SizedBox(height: 20.0),
-                  Material(
-                    elevation: 5.0,
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
-                    child: TextField(
-                      controller:
-                      TextEditingController(text: 'Recherche...'),
-                      cursorColor: Theme.of(context).primaryColor,
-                      style: TextStyle(color: Colors.black, fontSize: 18),
-                      decoration: InputDecoration(
-                          suffixIcon: Material(
-                            elevation: 2.0,
-                            borderRadius:
-                            BorderRadius.all(Radius.circular(30)),
-                            child: Icon(Icons.search),
-                          ),
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.symmetric(
-                              horizontal: 25, vertical: 13)),
-                    ),
-                  ),
-
-                ],
-              ),
-            ),*/
           ],
         ),
       ),
@@ -186,65 +192,6 @@ class _BeneficiairePageState extends State<BeneficiairePage> {
                           ))
                     ],
                   ),
-/*                  Row(
-                    children: <Widget>[
-                      Text(
-                        "Ships Free",
-                        style: TextStyle(color: Colors.orange),
-                      ),
-                      Spacer(),
-                      Row(
-                        children: <Widget>[
-                          InkWell(
-                            onTap: () {},
-                            splashColor: Colors.redAccent.shade200,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50)),
-                              alignment: Alignment.center,
-                              child: Padding(
-                                padding: const EdgeInsets.all(6.0),
-                                child: Icon(
-                                  Icons.remove,
-                                  color: Colors.redAccent,
-                                  size: 20,
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 4,
-                          ),
-                          Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text('2'),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 4,
-                          ),
-                          InkWell(
-                            onTap: () {},
-                            splashColor: Colors.lightBlue,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50)),
-                              alignment: Alignment.center,
-                              child: Padding(
-                                padding: const EdgeInsets.all(6.0),
-                                child: Icon(
-                                  Icons.add,
-                                  color: Colors.green,
-                                  size: 20,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),*/
                 ],
               ),
             ),
@@ -253,4 +200,16 @@ class _BeneficiairePageState extends State<BeneficiairePage> {
       ),
     );
   }
+}
+class Contact {
+  final String fullName;
+  final String email;
+  final String adresse;
+
+  const Contact({this.fullName, this.email,this.adresse});
+}
+void _onTapItem(BuildContext context, Contact post) {
+ /* Scaffold.of(context).showSnackBar(
+      new SnackBar(content: new Text("Tap on " + ' - ' + post.fullName)));*/
+  Navigator.push(context, MaterialPageRoute(builder: (context) =>TransactionPage()),);
 }

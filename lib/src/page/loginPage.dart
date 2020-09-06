@@ -96,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             child: Text("S'inscrire"),
                             onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => NavigationPage()),);
+                             /* Navigator.push(context, MaterialPageRoute(builder: (context) => NavigationPage()),);*/
                               setState(() {
                                 formVisible = true;
                                 _formsIndex = 2;
@@ -266,10 +266,7 @@ class _SignupFormState extends State<SignupPage>{
     "Sénégal",
     "Cote d'Ivoire",
   ];
-  int selectedIndex1 = 0,
-      selectedIndex2 = 0,
-      selectedIndex3 = 0,
-      selectedIndex4 = 0;
+  int selectedIndex1 = 0;
   List<Widget> _buildItems1() {
     return elements1
         .map((val) => MySelectionItem(
@@ -347,18 +344,23 @@ class _SignupFormState extends State<SignupPage>{
                     items: _buildItems1()),
               ]
           ),
-          RaisedButton(
-            color: Colors.blue,
-            textColor: Colors.white,
-            elevation: 0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            child: Text("S'inscrire"),
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => NavigationPage()),);
-            },
-          ),
+    SizedBox(
+    width: double.infinity,
+
+      child:RaisedButton(
+
+        color: Colors.blue,
+        textColor: Colors.white,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        child: Text("S'inscrire"),
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => NavigationPage()),);
+        },
+      ),
+    ),
         ],
       ),
     );
