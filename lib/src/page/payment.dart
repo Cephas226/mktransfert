@@ -48,7 +48,7 @@ class _PaymentPageState  extends State<PaymentPage>{
   payViaNewCard(BuildContext context) async {
     ProgressDialog dialog = new ProgressDialog(context);
     dialog.style(
-        message: 'Please wait...'
+        message: 'Patiencer svp...'
     );
     await dialog.show();
     var response = await StripeService.payWithNewCard(
@@ -85,7 +85,7 @@ class _PaymentPageState  extends State<PaymentPage>{
     ThemeData theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: Text('Payement'),
       ),
       body: Container(
         padding: EdgeInsets.all(20),
@@ -97,11 +97,11 @@ class _PaymentPageState  extends State<PaymentPage>{
               switch(index) {
                 case 0:
                   icon = Icon(Icons.add_circle, color: theme.primaryColor);
-                  text = Text('Pay via new card');
+                  text = Text('Payez via une carte');
                   break;
                 case 1:
                   icon = Icon(Icons.credit_card, color: theme.primaryColor);
-                  text = Text('Pay via existing card');
+                  text = Text('Pay via une carte existante');
                   break;
               }
 
