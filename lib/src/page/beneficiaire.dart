@@ -6,6 +6,8 @@ import 'package:mktransfert/src/page/payment.dart';
 
 import 'package:mktransfert/src/page/transaction.dart';
 
+import 'navigation.dart';
+
 class BeneficiairePage extends StatefulWidget {
   static final String path = "lib/src/pages/settings/settings1.dart";
   @override
@@ -45,15 +47,25 @@ class _BeneficiairePageState extends State<BeneficiairePage> {
           elevation: 0,
           backgroundColor: Colors.blue,
           title: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                IconButton(
+                  icon: Icon(Icons.add_circle),
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) =>NavigationPage()),);
+                  },
+                ),
                Container(
                  child:GestureDetector(
                      onTap: () {  Navigator.push(context, MaterialPageRoute(
                          builder: (context) => ChooseBeneficiairePage()));},
                      child: Text("Ajouter",style: TextStyle(
-                         fontWeight: FontWeight.bold, color: Colors.white))
+                         fontWeight: FontWeight.bold, color: Colors.white),
+                     ),
+
                  ),
-                  margin: const EdgeInsets.only(left: 300.0),
                )
               ]
           ),

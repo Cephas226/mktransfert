@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:mktransfert/src/page/dashboard.dart';
-
-import 'navigation.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -362,7 +359,8 @@ class MapScreenState extends State<ProfilePage>
                     },
                     shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(20.0)),
-                  )),
+                  )
+              ),
             ),
             flex: 2,
           ),

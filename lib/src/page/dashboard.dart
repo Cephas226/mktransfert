@@ -311,7 +311,7 @@ _buildDrawer() {
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       gradient: LinearGradient(
-                          colors: [Colors.orange, Colors.deepOrange])),
+                          colors: [Colors.blue, Colors.deepOrange])),
                   child: CircleAvatar(
                     radius: 40,
                     backgroundImage: NetworkImage('https://firebasestorage.googleapis.com/v0/b/mktransfert-d6990.appspot.com/o/Me.png?alt=media&token=044e199c-908b-4d22-9a2c-a720e4a6c6f3'),
@@ -326,7 +326,7 @@ _buildDrawer() {
                       fontWeight: FontWeight.w600),
                 ),
                 Text(
-                  "@erika07",
+                  "cephaszoubga@gmail.com",
                   style: TextStyle(color: active, fontSize: 16.0),
                 ),
                 SizedBox(height: 30.0),
@@ -361,7 +361,8 @@ Divider _buildDivider() {
   );
 }
 
-Widget _buildRow(IconData icon, String title, {bool showBadge = false}) {
+Widget _buildRow(IconData icon,
+    String title, {bool showBadge = false}) {
   final TextStyle tStyle = TextStyle(color: active, fontSize: 16.0);
   return Container(
     padding: const EdgeInsets.symmetric(vertical: 5.0),
@@ -398,7 +399,7 @@ Widget _buildRow(IconData icon, String title, {bool showBadge = false}) {
                   fontWeight: FontWeight.bold),
             ),
           ),
-        )
+        ),
     ]),
   );
 }
