@@ -15,14 +15,14 @@ class _AccueilPageState extends State<AccueilPage> {
   SwiperController _controller = SwiperController();
   int _currentIndex = 0;
   final List<String> titles = [
-    "Welcome",
-    "Awesome App",
-    "Flutter App",
+    "Bienvenu",
+    "Transfert d'argent",
+    "Mk transfert mobile",
   ];
   final List<String> subtitles = [
-    "Welcome to this awesome intro screen app.",
-    "This is an awesome app, of intro screen design",
-    "Flutter is awesome for app development"
+    "L'application mobile de transfert",
+    "Envoyez de l'argent partout en Guinée",
+    "Avec des taux défiants toutes concurrences."
   ];
   final List<Color> colors = [
     Colors.green.shade300,
@@ -62,7 +62,7 @@ class _AccueilPageState extends State<AccueilPage> {
           Align(
             alignment: Alignment.bottomLeft,
             child: FlatButton(
-              child: Text("Skip"),
+              child: Text("Sauter"),
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(
                     builder: (context) => LoginPage())

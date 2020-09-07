@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mktransfert/src/page/profil.dart';
+import 'package:mktransfert/src/page/dashboard.dart';
+import 'package:mktransfert/src/page/operations.dart';
 import 'package:mktransfert/src/page/transaction.dart';
 
 import 'beneficiaire.dart';
@@ -12,7 +14,7 @@ class NavigationPage extends StatefulWidget {
 }
 
 class _NavigationPageState extends State<NavigationPage> {
-  PageController _myPage = PageController(initialPage: 2);
+  PageController _myPage = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +42,7 @@ class _NavigationPageState extends State<NavigationPage> {
               IconButton(
                 iconSize: 30.0,
                 padding: EdgeInsets.only(right: 28.0),
-                icon: Icon(Icons.person),
+                icon: Icon(Icons.payment),
                 onPressed: () {
                   setState(() {
                     _myPage.jumpToPage(1);
@@ -60,7 +62,7 @@ class _NavigationPageState extends State<NavigationPage> {
               IconButton(
                 iconSize: 30.0,
                 padding: EdgeInsets.only(right: 28.0),
-                icon: Icon(Icons.info),
+                icon: Icon(Icons.person),
                 onPressed: () {
                   setState(() {
                     _myPage.jumpToPage(3);
@@ -79,12 +81,12 @@ class _NavigationPageState extends State<NavigationPage> {
         children: <Widget>[
           Center(
             child: Container(
-              child: Text('Empty Body 0'),
+              child: DashboardPage(),
             ),
           ),
           Center(
             child: Container(
-              child: ProfilPage(),
+              child: OperationListPage(),
             ),
           ),
           Center(
@@ -94,7 +96,7 @@ class _NavigationPageState extends State<NavigationPage> {
           ),
           Center(
             child: Container(
-              child: Text('Empty Body 3'),
+              child: ProfilePage(),
             ),
           )
         ],

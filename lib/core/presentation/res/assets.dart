@@ -137,7 +137,7 @@ const INVITE_ILLUSTRATION = "https://firebasestorage.googleapis.com/v0/b/dl-flut
 const String bike = "https://firebasestorage.googleapis.com/v0/b/dl-flutter-ui-challenges.appspot.com/o/bike%2Fbike1.jpg?alt=media";
 
 const String accueil = "assets/background/bgAccueil.png";
-
+const String myavatar = "assets/Image/avatar.png";
 const List<String> introIllus = [
   'https://firebasestorage.googleapis.com/v0/b/dl-flutter-ui-challenges.appspot.com/o/intro%2F1.png?alt=media',
   'https://firebasestorage.googleapis.com/v0/b/dl-flutter-ui-challenges.appspot.com/o/intro%2F2.png?alt=media',
