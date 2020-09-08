@@ -1,4 +1,10 @@
-#Fri Sep 04 11:10:16 WEST 2020
-base.0=/Users/mac/Documents/mktransfert/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+#Tue Sep 08 13:14:45 WEST 2020
+path.2=classes3.dex
+path.1=classes2.dex
 path.0=classes.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
 renamed.0=classes.dex
+base.2=/Users/mac/Documents/mktransfert/build/app/intermediates/dex/debug/mergeDexDebug/classes3.dex
+base.1=/Users/mac/Documents/mktransfert/build/app/intermediates/dex/debug/mergeDexDebug/classes2.dex
+base.0=/Users/mac/Documents/mktransfert/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex

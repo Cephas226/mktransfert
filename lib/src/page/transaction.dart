@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:direct_select/direct_select.dart';
+import 'package:fancy_alert_dialog/fancy_alert_dialog.dart';
+import 'package:fancy_dialog/fancy_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -137,6 +139,7 @@ class _TransactionState extends State<TransactionPage> {
                     ),
                         ListTile(
                           title: Chip(
+                            backgroundColor: Colors.transparent,
                             label: result != null ?
                             Text(
                               result,
@@ -176,6 +179,11 @@ class _TransactionState extends State<TransactionPage> {
                         ]
                     ),
                    Container(
+                     decoration: const BoxDecoration(
+                       border: Border(
+                         left: BorderSide(width: 10.0, color: Colors.indigoAccent),
+                       ),
+                     ),
                      height: 80,
                      child: Card(
                        color: _colorFromHex("#F7FAFF"),
@@ -192,11 +200,12 @@ class _TransactionState extends State<TransactionPage> {
                              ),
                            ),
                            Chip(
+                             backgroundColor: Colors.transparent,
                              label: result != null ?
                              Text(
-                               result,
+                               (double.parse(result) + 12).toStringAsFixed(2),
                                style: Theme.of(context).textTheme.display1,
-                             ) : Text("......................"),
+                             ) : Text(""),
                            )
                          ],
                        ),
@@ -204,6 +213,11 @@ class _TransactionState extends State<TransactionPage> {
                    ),
                     const SizedBox(height: 20.0),
                     Container(
+                      decoration: const BoxDecoration(
+                        border: Border(
+                          left: BorderSide(width: 10.0, color: Colors.black54),
+                        ),
+                      ),
                       height: 80,
                       child: Card(
                         color: _colorFromHex("#F7FAFF"),
@@ -220,11 +234,12 @@ class _TransactionState extends State<TransactionPage> {
                               ),
                             ),
                             Chip(
+                              backgroundColor: Colors.transparent,
                               label: result != null ?
                               Text(
-                                result+0.12.toString(),
+                                12.toString(),
                                 style: Theme.of(context).textTheme.display1,
-                              ) : Text("......................"),
+                              ) : Text(""),
                             )
                           ],
                         ),
@@ -232,6 +247,11 @@ class _TransactionState extends State<TransactionPage> {
                     ),
                     const SizedBox(height: 20.0),
                     Container(
+                      decoration: const BoxDecoration(
+                        border: Border(
+                          left: BorderSide(width: 10.0, color: Colors.redAccent),
+                        ),
+                      ),
                       height: 80,
                       child: Card(
                         color: _colorFromHex("#F7FAFF"),
@@ -239,7 +259,23 @@ class _TransactionState extends State<TransactionPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
-                            Text("Montant total à payer:",style: TextStyle (fontWeight:FontWeight.w500)),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10.0),
+                              child: Text(
+                                "Montant total à payer :",
+                                style: TextStyle(
+                                    color: Colors.black, fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                            Chip(
+                              backgroundColor: Colors.transparent,
+                              label: result != null ?
+                              Text(
+                                (double.parse(fromTextController.text) + 12).toStringAsFixed(2),
+                                style: Theme.of(context).textTheme.display1,
+                              )
+                                  : Text(""),
+                            )
                           ],
                         ),
                       ),
@@ -256,7 +292,54 @@ class _TransactionState extends State<TransactionPage> {
                         ),
                         child: Text("Effectuer un transfert"),
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) =>PaymentPage()),);
+                          if(fromTextController.text.isEmpty){
+                            FancyAlertDialog.showFancyAlertDialog(
+                              context,
+                              'Alerte',
+                              'Veillez remplir le montant',
+                              Colors.red,
+                              icon: Icon(
+                                Icons.warning,
+                                color: Colors.white,
+                              ),
+                              labelPositiveButton: 'Ok',
+                              onTapPositiveButton: () {
+                                Navigator.pop(context);
+                              },
+                              labelNegativeButton: '',
+                              onTapNegativeButton: () {
+                                Navigator.pop(context);
+                                print('tap negative button');
+                              },
+                            );
+                          }
+                          else{
+                            FancyAlertDialog.showFancyAlertDialog(
+                              context,
+                              'Confirmation',
+                              'Le montant a envoyé est de'+fromTextController.text
+                                  +'.Le montant à recevoir est de' + (double.parse(result) + 12).toStringAsFixed(2)
+                                  +'.Le montant de la commission est de' + 12.toString()
+                                  +'.Le montant total est de ' + (double.parse(fromTextController.text) + 12).toStringAsFixed(2),
+                              Colors.blue,
+                              icon: Icon(
+                                Icons.clear,
+                                color: Colors.white,
+                              ),
+                              labelPositiveButton: 'OK',
+                              onTapPositiveButton: () {
+                                Navigator.pop(context);
+                                // Navigator.pop(context);
+                                Navigator.push(context, MaterialPageRoute(builder: (context) =>PaymentPage()),);
+                              },
+                              labelNegativeButton: 'Annulez',
+                              onTapNegativeButton: () {
+                                Navigator.pop(context);
+                                print('tap negative button');
+                              },
+                            );
+                          }
+                          // Navigator.push(context, MaterialPageRoute(builder: (context) =>PaymentPage()),);
                         },
                       ),
                     ),
@@ -288,7 +371,7 @@ class _TransactionState extends State<TransactionPage> {
             child: Row(
               children: <Widget>[
                 Text(value, style:TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontWeight: FontWeight.w500
                 )),
               ],
