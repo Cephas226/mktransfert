@@ -22,6 +22,10 @@ class _NavigationPageState extends State<NavigationPage> {
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
         child: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [Colors.blue, Colors.deepPurple])
+          ),
           height: 75,
           child: Row(
             mainAxisSize: MainAxisSize.max,

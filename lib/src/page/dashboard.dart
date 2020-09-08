@@ -311,7 +311,8 @@ _buildDrawer() {
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       gradient: LinearGradient(
-                          colors: [Colors.blue, Colors.deepOrange])),
+                          colors: [Colors.blue, Colors.deepOrange])
+                  ),
                   child: CircleAvatar(
                     radius: 40,
                     backgroundImage: NetworkImage('https://firebasestorage.googleapis.com/v0/b/mktransfert-d6990.appspot.com/o/Me.png?alt=media&token=044e199c-908b-4d22-9a2c-a720e4a6c6f3'),

@@ -107,7 +107,6 @@ class _TransactionState extends State<TransactionPage> {
       body: currencies == null
           ? Center(child: CircularProgressIndicator())
           : Container(
-
         width: MediaQuery.of(context).size.width,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -184,7 +183,21 @@ class _TransactionState extends State<TransactionPage> {
                        child: Row(
                          mainAxisAlignment: MainAxisAlignment.start,
                          children: <Widget>[
-                           Text("Montant à recevoir:",style: TextStyle (fontWeight:FontWeight.w500)),
+                           Padding(
+                             padding: const EdgeInsets.only(left: 10.0),
+                             child: Text(
+                               "Montant à recevoir :",
+                               style: TextStyle(
+                                   color: Colors.black, fontWeight: FontWeight.w500),
+                             ),
+                           ),
+                           Chip(
+                             label: result != null ?
+                             Text(
+                               result,
+                               style: Theme.of(context).textTheme.display1,
+                             ) : Text("......................"),
+                           )
                          ],
                        ),
                      ),
@@ -198,7 +211,21 @@ class _TransactionState extends State<TransactionPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
-                            Text("Montant commission:",style: TextStyle (fontWeight:FontWeight.w500)),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10.0),
+                              child: Text(
+                                "Montant commission :",
+                                style: TextStyle(
+                                    color: Colors.black, fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                            Chip(
+                              label: result != null ?
+                              Text(
+                                result+0.12.toString(),
+                                style: Theme.of(context).textTheme.display1,
+                              ) : Text("......................"),
+                            )
                           ],
                         ),
                       ),
